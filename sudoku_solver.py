@@ -5,7 +5,7 @@ class SudokuSolver:
         self.board = [x[::] for x in board]
         self.path = []
         mat = [x[::] for x in self.board]
-        self.path.append(mat)
+        self.path.append([mat, [0,0]])
         
     
     def findEmptyCell(self):
@@ -41,17 +41,17 @@ class SudokuSolver:
         for digit in range(1, 10):
             if self.canFill(x, y, digit):
                 self.board[x][y] = digit 
-                old_matrix = self.path[-1]
+                old_matrix = self.path[-1][0]
                 new_matrix = [x[::] for x in old_matrix]
                 new_matrix[x][y] = digit
-                self.path.append(new_matrix)
+                self.path.append([new_matrix, [x, y]])
                 if self.solve():
                     return True, self.board, self.path 
                 self.board[x][y] = 0 # backtrack 
-                old_matrix = self.path[-1]
+                old_matrix = self.path[-1][0]
                 new_matrix = [x[::] for x in old_matrix]
                 new_matrix[x][y] = digit
-                self.path.append(new_matrix)
+                self.path.append([new_matrix, [x, y]])
         
         return False
 
@@ -73,11 +73,9 @@ class SudokuSolver:
 #         for i in range(9):
 #             print(grid[i])
 #         print(len(path))
-#         # for i in range(5):
-#         #     print("\nStep : ", i+1)
-#         #     for j in range(9):
-#         #         print(path[i][j])
 #         for i in range(9):
-#             print(path[-1][i])
+#             print("Step :" , i+1)
+#             for j in range(9):
+#                 print(path[i][0][j])
 #     else:
 #         print("NO")

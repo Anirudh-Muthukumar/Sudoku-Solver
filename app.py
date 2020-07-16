@@ -27,4 +27,4 @@ def solve_puzzle():
 
 
 if __name__ == "__main__":
-    app.run(debug = True)
+    app.run()
