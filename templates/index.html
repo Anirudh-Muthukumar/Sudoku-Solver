@@ -1,0 +1,365 @@
+<!DOCTYPE HTML>
+<html>
+    <head>
+        <style>
+            input{
+                background-color:#ffffcc;
+                border: None;
+                text-align: center;
+                font-family: "Comic Sans MS", cursive, sans-serif;
+                font-size: medium;
+            }
+            body {
+                    background-image: url("home_page.png");
+                }
+            table {
+                    border-collapse: collapse;
+                    width: 10%;
+                    position: relative;
+                }
+
+            table, th, td {
+                    border: 1px solid black;
+                    border-collapse: collapse;
+                }
+
+            .grid_3_3_top {
+                border-top: 3px solid black;
+            }
+
+            .grid_3_3_bottom {
+                border-bottom: 3px solid black;
+            }
+
+            .grid_3_3_right {
+                border-right: 3px solid black;
+            }
+
+            .grid_3_3_left {
+                border-left: 3px solid black;
+            }
+
+            td {
+                width: 20px;
+            }
+
+            .header_text {
+                text-align: center;
+                font-family: "Comic Sans MS", cursive, sans-serif;
+                font-size: 40px;
+                position: relative;
+                /* top: 250px; */
+            }
+
+            .button_text_1 {
+                text-align: center;
+                font-family: "Comic Sans MS", cursive, sans-serif;
+                font-size: 25px;
+                border: 1px solid black;
+                position: fixed;
+                top: 420px;
+                left: 630px;
+            }
+
+            .button_text_1:hover {
+                text-align: center;
+                font-family: "Comic Sans MS", cursive, sans-serif;
+                font-size: 25px;
+                border: 1px solid black;
+                position: fixed;
+                top: 420px;
+                left: 630px;
+                background-color: burlywood;
+            }
+
+            .button_text_2 {
+                text-align: center;
+                font-family: "Comic Sans MS", cursive, sans-serif;
+                font-size: 25px;
+                border: 1px solid black;
+                position: fixed;
+                top: 420px;
+                left: 730px;
+            }
+
+            .button_text_2:hover {
+                text-align: center;
+                font-family: "Comic Sans MS", cursive, sans-serif;
+                font-size: 25px;
+                border: 1px solid black;
+                position: fixed;
+                top: 420px;
+                left: 730px;
+                background-color: burlywood;
+            }
+
+            .solution_header { 
+                text-align: center;
+                text-align: center;
+                font-family: "Comic Sans MS", cursive, sans-serif;
+                font-size: 40px;
+                position: relative;
+                top: 10px;
+            }
+
+            .solution_table {
+                text-align: center;
+                font-family: "Comic Sans MS", cursive, sans-serif;
+                border: 1px solid black;
+                position: relative;
+                top: 100px;
+                width: 30%;
+            }
+
+            .solution_cell {
+                text-align: center;
+                font-family: "Comic Sans MS", cursive, sans-serif;
+                font-size: 20px;
+            }
+            
+            
+        </style>
+        <title>
+            Sudoku Solver
+        </title>
+    </head>
+    <body style="background-color: #ffffcc;">
+        <h1 align="center" class = 'header_text'> Sudoku Solver  </h1> 
+
+            <form action='/solve'>
+                <table align="center" name='input_board' id='input_grid'>
+                    <tr class = 'grid_3_3_top'>
+                        <td class="grid_3_3_left"><input type="text" name='00' id='one' size="3" maxlength="1"></td> 
+                        <td><input type="text" name='01' id = 'two' size="3" maxlength="1"></td> 
+                        <td class = "grid_3_3_right"><input type="text" name='02' id = 'three' size="3" maxlength="1"></td> 
+                        <td><input type="text" name='03' id='one' size="3" maxlength="1"></td> 
+                        <td><input type="text" name='04' id = 'two' size="3" maxlength="1"></td> 
+                        <td class = "grid_3_3_right"><input type="text" name='05' id = 'three' size="3" maxlength="1"></td>
+                        <td><input type="text" name='06' id='one' size="3" maxlength="1"></td> 
+                        <td><input type="text" name='07' id = 'two' size="3" maxlength="1"></td> 
+                        <td class = "grid_3_3_right"><input type="text" name='08' id = 'three' size="3" maxlength="1"></td>
+                    </tr>  
+                    <tr>
+                        <td class="grid_3_3_left"><input type="text" name='10' id='one' size="3" maxlength="1"></td> 
+                        <td><input type="text" name='11' id = 'two' size="3" maxlength="1"></td> 
+                        <td class = "grid_3_3_right"><input type="text" name='12' id = 'three' size="3" maxlength="1"></td> 
+                        <td><input type="text" name='13' id='one' size="3" maxlength="1"></td> 
+                        <td><input type="text" name='14' id = 'two' size="3" maxlength="1"></td> 
+                        <td class = "grid_3_3_right"><input type="text" name='15' id = 'three' size="3" maxlength="1"></td>
+                        <td><input type="text" name='16' id='one' size="3" maxlength="1"></td> 
+                        <td><input type="text" name='17' id = 'two' size="3" maxlength="1"></td> 
+                        <td class = "grid_3_3_right"><input type="text" name='18' id = 'three' size="3" maxlength="1"></td>
+                    </tr>  
+                    <tr>
+                        <td class="grid_3_3_left"><input type="text" name='20' id='one' size="3" maxlength="1"></td> 
+                        <td><input type="text" name='21' id = 'two' size="3" maxlength="1"></td> 
+                        <td class = "grid_3_3_right"><input type="text" name='22' id = 'three' size="3" maxlength="1"></td> 
+                        <td><input type="text" name='23' id='one' size="3" maxlength="1"></td> 
+                        <td><input type="text" name='24' id = 'two' size="3" maxlength="1"></td> 
+                        <td class = "grid_3_3_right"><input type="text" name='25' id = 'three' size="3" maxlength="1"></td>
+                        <td><input type="text" name='26' id='one' size="3" maxlength="1"></td> 
+                        <td><input type="text" name='27' id = 'two' size="3" maxlength="1"></td> 
+                        <td class = "grid_3_3_right"><input type="text" name='28' id = 'three' size="3" maxlength="1"></td>
+                    </tr>  
+                    <tr class = 'grid_3_3_top'>
+                        <td class="grid_3_3_left"><input type="text" name='30' id='one' size="3" maxlength="1"></td> 
+                        <td><input type="text" name='31' id = 'two' size="3" maxlength="1"></td> 
+                        <td class = "grid_3_3_right"><input type="text" name='32' id = 'three' size="3" maxlength="1"></td> 
+                        <td><input type="text" name='33' id='one' size="3" maxlength="1"></td> 
+                        <td><input type="text" name='34' id = 'two' size="3" maxlength="1"></td> 
+                        <td class = "grid_3_3_right"><input type="text" name='35' id = 'three' size="3" maxlength="1"></td>
+                        <td><input type="text" name='36' id='one' size="3" maxlength="1"></td> 
+                        <td><input type="text" name='37' id = 'two' size="3" maxlength="1"></td> 
+                        <td class = "grid_3_3_right"><input type="text" name='38' id = 'three' size="3" maxlength="1"></td>
+                    </tr>  
+                    <tr>
+                        <td class="grid_3_3_left"><input type="text" name='40' id='one' size="3" maxlength="1"></td> 
+                        <td><input type="text" name='41' id = 'two' size="3" maxlength="1"></td> 
+                        <td class = "grid_3_3_right"><input type="text" name='42' id = 'three' size="3" maxlength="1"></td> 
+                        <td><input type="text" name='43' id='one' size="3" maxlength="1"></td> 
+                        <td><input type="text" name='44' id = 'two' size="3" maxlength="1"></td> 
+                        <td class = "grid_3_3_right"><input type="text" name='45' id = 'three' size="3" maxlength="1"></td>
+                        <td><input type="text" name='46' id='one' size="3" maxlength="1"></td> 
+                        <td><input type="text" name='47' id = 'two' size="3" maxlength="1"></td> 
+                        <td class = "grid_3_3_right"><input type="text" name='48' id = 'three' size="3" maxlength="1"></td>
+                    </tr>  
+                    <tr>
+                        <td class="grid_3_3_left"><input type="text" name='50' id='one' size="3" maxlength="1"></td> 
+                        <td><input type="text" name='51' id = 'two' size="3" maxlength="1"></td> 
+                        <td class = "grid_3_3_right"><input type="text" name='52' id = 'three' size="3" maxlength="1"></td> 
+                        <td><input type="text" name='53' id='one' size="3" maxlength="1"></td> 
+                        <td><input type="text" name='54' id = 'two' size="3" maxlength="1"></td> 
+                        <td class = "grid_3_3_right"><input type="text" name='55' id = 'three' size="3" maxlength="1"></td>
+                        <td><input type="text" name='56' id='one' size="3" maxlength="1"></td> 
+                        <td><input type="text" name='57' id = 'two' size="3" maxlength="1"></td> 
+                        <td class = "grid_3_3_right"><input type="text" name='58' id = 'three' size="3" maxlength="1"></td>
+                    </tr>  
+                    <tr class = 'grid_3_3_top'>
+                        <td class="grid_3_3_left"><input type="text" name='60' id='one' size="3" maxlength="1"></td> 
+                        <td><input type="text" name='61' id = 'two' size="3" maxlength="1"></td> 
+                        <td class = "grid_3_3_right"><input type="text" name='62' id = 'three' size="3" maxlength="1"></td> 
+                        <td><input type="text" name='63' id='one' size="3" maxlength="1"></td> 
+                        <td><input type="text" name='64' id = 'two' size="3" maxlength="1"></td> 
+                        <td class = "grid_3_3_right"><input type="text" name='65' id = 'three' size="3" maxlength="1"></td>
+                        <td><input type="text" name='66' id='one' size="3" maxlength="1"></td> 
+                        <td><input type="text" name='67' id = 'two' size="3" maxlength="1"></td> 
+                        <td class = "grid_3_3_right"><input type="text" name='68' id = 'three' size="3" maxlength="1"></td>
+                    </tr>  
+                    <tr>
+                        <td class="grid_3_3_left"><input type="text" name='70' id='one' size="3" maxlength="1"></td> 
+                        <td><input type="text" name='71' id = 'two' size="3" maxlength="1"></td> 
+                        <td class = "grid_3_3_right"><input type="text" name='72' id = 'three' size="3" maxlength="1"></td> 
+                        <td><input type="text" name='73' id='one' size="3" maxlength="1"></td> 
+                        <td><input type="text" name='74' id = 'two' size="3" maxlength="1"></td> 
+                        <td class = "grid_3_3_right"><input type="text" name='75' id = 'three' size="3" maxlength="1"></td>
+                        <td><input type="text" name='76' id='one' size="3" maxlength="1"></td> 
+                        <td><input type="text" name='77' id = 'two' size="3" maxlength="1"></td> 
+                        <td class = "grid_3_3_right"><input type="text" name='78' id = 'three' size="3" maxlength="1"></td>
+                    </tr>  
+                    <tr class = 'grid_3_3_bottom'>
+                        <td class="grid_3_3_left"><input type="text" name='80' id='one' size="3" maxlength="1"></td> 
+                        <td><input type="text" name='81' id = 'two' size="3" maxlength="1"></td> 
+                        <td class = "grid_3_3_right"><input type="text" name='82' id = 'three' size="3" maxlength="1"></td> 
+                        <td><input type="text" name='83' id='one' size="3" maxlength="1"></td> 
+                        <td><input type="text" name='84' id = 'two' size="3" maxlength="1"></td> 
+                        <td class = "grid_3_3_right"><input type="text" name='85' id = 'three' size="3" maxlength="1"></td>
+                        <td><input type="text" name='86' id='one' size="3" maxlength="1"></td> 
+                        <td><input type="text" name='87' id = 'two' size="3" maxlength="1"></td> 
+                        <td class = "grid_3_3_right"><input type="text" name='88' id = 'three' size="3" maxlength="1"></td>
+                    </tr >    
+                </table>
+                <input class='button_text_1' type='submit' value = 'Solve'>
+            </form>
+            
+            <form action='/clear'>
+                <input class='button_text_2' type='submit' value = 'Clear'>
+            </form>
+            {% if solution %}
+                {% if not result %}
+                    <p class='solution_header'> Solution </p>
+                    <p class='solution_header'> No solution found!! (: </p>
+                {% else %}
+                    <!-- <p class='solution_header'> Solution </p> -->
+
+                    <table class='solution_table' align="center" name='solution_board' id='solution_grid'>
+                            <tr>
+                                {% for i in range(9) %}
+                                    <tr>
+                                        {% for j in range(9) %}
+                                            <td class='solution_cell'> {{ content[-1][i][j] }} </td> 
+                                        {% endfor %}
+                                    </tr>
+                                {% endfor %}
+                            </tr>   
+                    </table>
+
+                {% endif %}
+            {% endif %}
+                <!-- <table class ="solution" align="center" name='solution_board' id='solution_grid'>
+                    <tr>
+                        <table align="center" name='input_board' id='input_grid'>
+                            <tr class = 'grid_3_3_top'>
+                                <td class="grid_3_3_left"><input type="text" name='00' id='one' size="3" maxlength="1"></td> 
+                                <td><input type="text" name='01' id = 'two' size="3" maxlength="1"></td> 
+                                <td class = "grid_3_3_right"><input type="text" name='02' id = 'three' size="3" maxlength="1"></td> 
+                                <td><input type="text" name='03' id='one' size="3" maxlength="1"></td> 
+                                <td><input type="text" name='04' id = 'two' size="3" maxlength="1"></td> 
+                                <td class = "grid_3_3_right"><input type="text" name='05' id = 'three' size="3" maxlength="1"></td>
+                                <td><input type="text" name='06' id='one' size="3" maxlength="1"></td> 
+                                <td><input type="text" name='07' id = 'two' size="3" maxlength="1"></td> 
+                                <td class = "grid_3_3_right"><input type="text" name='08' id = 'three' size="3" maxlength="1"></td>
+                            </tr>  
+                            <tr>
+                                <td class="grid_3_3_left"><input type="text" name='10' id='one' size="3" maxlength="1"></td> 
+                                <td><input type="text" name='11' id = 'two' size="3" maxlength="1"></td> 
+                                <td class = "grid_3_3_right"><input type="text" name='12' id = 'three' size="3" maxlength="1"></td> 
+                                <td><input type="text" name='13' id='one' size="3" maxlength="1"></td> 
+                                <td><input type="text" name='14' id = 'two' size="3" maxlength="1"></td> 
+                                <td class = "grid_3_3_right"><input type="text" name='15' id = 'three' size="3" maxlength="1"></td>
+                                <td><input type="text" name='16' id='one' size="3" maxlength="1"></td> 
+                                <td><input type="text" name='17' id = 'two' size="3" maxlength="1"></td> 
+                                <td class = "grid_3_3_right"><input type="text" name='18' id = 'three' size="3" maxlength="1"></td>
+                            </tr>  
+                            <tr>
+                                <td class="grid_3_3_left"><input type="text" name='20' id='one' size="3" maxlength="1"></td> 
+                                <td><input type="text" name='21' id = 'two' size="3" maxlength="1"></td> 
+                                <td class = "grid_3_3_right"><input type="text" name='22' id = 'three' size="3" maxlength="1"></td> 
+                                <td><input type="text" name='23' id='one' size="3" maxlength="1"></td> 
+                                <td><input type="text" name='24' id = 'two' size="3" maxlength="1"></td> 
+                                <td class = "grid_3_3_right"><input type="text" name='25' id = 'three' size="3" maxlength="1"></td>
+                                <td><input type="text" name='26' id='one' size="3" maxlength="1"></td> 
+                                <td><input type="text" name='27' id = 'two' size="3" maxlength="1"></td> 
+                                <td class = "grid_3_3_right"><input type="text" name='28' id = 'three' size="3" maxlength="1"></td>
+                            </tr>  
+                            <tr class = 'grid_3_3_top'>
+                                <td class="grid_3_3_left"><input type="text" name='30' id='one' size="3" maxlength="1"></td> 
+                                <td><input type="text" name='31' id = 'two' size="3" maxlength="1"></td> 
+                                <td class = "grid_3_3_right"><input type="text" name='32' id = 'three' size="3" maxlength="1"></td> 
+                                <td><input type="text" name='33' id='one' size="3" maxlength="1"></td> 
+                                <td><input type="text" name='34' id = 'two' size="3" maxlength="1"></td> 
+                                <td class = "grid_3_3_right"><input type="text" name='35' id = 'three' size="3" maxlength="1"></td>
+                                <td><input type="text" name='36' id='one' size="3" maxlength="1"></td> 
+                                <td><input type="text" name='37' id = 'two' size="3" maxlength="1"></td> 
+                                <td class = "grid_3_3_right"><input type="text" name='38' id = 'three' size="3" maxlength="1"></td>
+                            </tr>  
+                            <tr>
+                                <td class="grid_3_3_left"><input type="text" name='40' id='one' size="3" maxlength="1"></td> 
+                                <td><input type="text" name='41' id = 'two' size="3" maxlength="1"></td> 
+                                <td class = "grid_3_3_right"><input type="text" name='42' id = 'three' size="3" maxlength="1"></td> 
+                                <td><input type="text" name='43' id='one' size="3" maxlength="1"></td> 
+                                <td><input type="text" name='44' id = 'two' size="3" maxlength="1"></td> 
+                                <td class = "grid_3_3_right"><input type="text" name='45' id = 'three' size="3" maxlength="1"></td>
+                                <td><input type="text" name='46' id='one' size="3" maxlength="1"></td> 
+                                <td><input type="text" name='47' id = 'two' size="3" maxlength="1"></td> 
+                                <td class = "grid_3_3_right"><input type="text" name='48' id = 'three' size="3" maxlength="1"></td>
+                            </tr>  
+                            <tr>
+                                <td class="grid_3_3_left"><input type="text" name='50' id='one' size="3" maxlength="1"></td> 
+                                <td><input type="text" name='51' id = 'two' size="3" maxlength="1"></td> 
+                                <td class = "grid_3_3_right"><input type="text" name='52' id = 'three' size="3" maxlength="1"></td> 
+                                <td><input type="text" name='53' id='one' size="3" maxlength="1"></td> 
+                                <td><input type="text" name='54' id = 'two' size="3" maxlength="1"></td> 
+                                <td class = "grid_3_3_right"><input type="text" name='55' id = 'three' size="3" maxlength="1"></td>
+                                <td><input type="text" name='56' id='one' size="3" maxlength="1"></td> 
+                                <td><input type="text" name='57' id = 'two' size="3" maxlength="1"></td> 
+                                <td class = "grid_3_3_right"><input type="text" name='58' id = 'three' size="3" maxlength="1"></td>
+                            </tr>  
+                            <tr class = 'grid_3_3_top'>
+                                <td class="grid_3_3_left"><input type="text" name='60' id='one' size="3" maxlength="1"></td> 
+                                <td><input type="text" name='61' id = 'two' size="3" maxlength="1"></td> 
+                                <td class = "grid_3_3_right"><input type="text" name='62' id = 'three' size="3" maxlength="1"></td> 
+                                <td><input type="text" name='63' id='one' size="3" maxlength="1"></td> 
+                                <td><input type="text" name='64' id = 'two' size="3" maxlength="1"></td> 
+                                <td class = "grid_3_3_right"><input type="text" name='65' id = 'three' size="3" maxlength="1"></td>
+                                <td><input type="text" name='66' id='one' size="3" maxlength="1"></td> 
+                                <td><input type="text" name='67' id = 'two' size="3" maxlength="1"></td> 
+                                <td class = "grid_3_3_right"><input type="text" name='68' id = 'three' size="3" maxlength="1"></td>
+                            </tr>  
+                            <tr>
+                                <td class="grid_3_3_left"><input type="text" name='70' id='one' size="3" maxlength="1"></td> 
+                                <td><input type="text" name='71' id = 'two' size="3" maxlength="1"></td> 
+                                <td class = "grid_3_3_right"><input type="text" name='72' id = 'three' size="3" maxlength="1"></td> 
+                                <td><input type="text" name='73' id='one' size="3" maxlength="1"></td> 
+                                <td><input type="text" name='74' id = 'two' size="3" maxlength="1"></td> 
+                                <td class = "grid_3_3_right"><input type="text" name='75' id = 'three' size="3" maxlength="1"></td>
+                                <td><input type="text" name='76' id='one' size="3" maxlength="1"></td> 
+                                <td><input type="text" name='77' id = 'two' size="3" maxlength="1"></td> 
+                                <td class = "grid_3_3_right"><input type="text" name='78' id = 'three' size="3" maxlength="1"></td>
+                            </tr>  
+                            <tr class = 'grid_3_3_bottom'>
+                                <td class="grid_3_3_left"><input type="text" name='80' id='one' size="3" maxlength="1"></td> 
+                                <td><input type="text" name='81' id = 'two' size="3" maxlength="1"></td> 
+                                <td class = "grid_3_3_right"><input type="text" name='82' id = 'three' size="3" maxlength="1"></td> 
+                                <td><input type="text" name='83' id='one' size="3" maxlength="1"></td> 
+                                <td><input type="text" name='84' id = 'two' size="3" maxlength="1"></td> 
+                                <td class = "grid_3_3_right"><input type="text" name='85' id = 'three' size="3" maxlength="1"></td>
+                                <td><input type="text" name='86' id='one' size="3" maxlength="1"></td> 
+                                <td><input type="text" name='87' id = 'two' size="3" maxlength="1"></td> 
+                                <td class = "grid_3_3_right"><input type="text" name='88' id = 'three' size="3" maxlength="1"></td>
+                            </tr >    
+                        </table>
+                    </tr>    
+                </table> -->
+            
+    </body>
+</html>
